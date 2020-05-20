@@ -1,0 +1,22 @@
+@layout('layout')
+
+
+@section('body')
+<h1>Create a article Tag</h1>
+
+
+<form action="{{ route('tags.store') }}" method="post">
+  {{ csrfField() }}
+
+  <div>
+    <input type="text" name="name" placeholder="tag name">
+  </div>
+
+  <div>
+    <button>Save</button>
+  </div>
+
+
+</form>
+
+@endsection

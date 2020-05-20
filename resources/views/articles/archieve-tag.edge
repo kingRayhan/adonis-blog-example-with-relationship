@@ -1,0 +1,23 @@
+@layout('layout')
+
+
+@section('body')
+
+<h1>Tag :{{ tag.name }}</h1>
+<h1>Post count :{{ tag.__meta__.articles_count }}</h1>
+
+@each(article in tag.articles)
+<article>
+  <h1>{{ article.title }}</h1>
+  <p>{{ article.body }}</p>
+
+  @each(tag in article.tags)
+  <a href="{{ route('tag.articles' , { tagId: tag.id }) }}">{{ tag.name }}</a>
+  @endeach
+
+  <p>Written by <a
+      href="{{ route('user.profile' , { username: article.user.username }) }}">{{ article.user.username }}</a></p>
+  <hr>
+</article>
+@endeach
+@endsection

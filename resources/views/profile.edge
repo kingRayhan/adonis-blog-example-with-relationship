@@ -1,0 +1,22 @@
+@layout('layout')
+
+
+@section('body')
+<h1>Username: {{ user.username }}</h1>
+<h1>email:{{ user.email }}</h1>
+<h1>number of articles:{{ user.__meta__.articles_count }}</h1>
+
+
+<h1>My Articles</h1>
+
+@each(article in user.articles)
+<article>
+  <h1>{{ article.title }}</h1>
+  <p>{{ article.body }}</p>
+  <p>Written by <a
+      href="{{ route('user.profile' , { username: article.user.username }) }}">{{ article.user.username }}</a></p>
+  <hr>
+</article>
+@endeach
+
+@endsection

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<style>
+  nav {
+    display: flex;
+  }
+
+</style>
+
+
+<body>
+  <nav>
+    @loggedIn
+    <a href="{{ route('articles.create') }}">Create article</a>
+    <a href="{{ route('tags.create') }}">Create tag</a>
+    <span>{{ auth.user.username }}</span>
+    <form action="{{ route('auth.logout') }}" method="post">
+      {{ csrfField() }}
+      <button>Logout</button>
+    </form>
+    @else
+    <a href="{{ route('auth.register') }}">Register</a>
+    <a href="{{ route('auth.login') }}">Login</a>
+    @endloggedIn
+
+
+    <a href="{{ route('homePage') }}">Home</a>
+    <a href="{{ route('articles.index') }}">Articles</a>
+  </nav>
+
+  @if(flashMessage('msg'))
+  <span style="color: green">{{ flashMessage('msg') }}</span>
+  @endif
+
+
+
+  @!section('body')
+
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+@layout('layout')
+
+
+@section('body')
+<h1>Create a article Article</h1>
+
+
+<form action="{{ route('articles.store') }}" method="post">
+  {{ csrfField() }}
+
+  <div>
+    <input type="text" name="title" placeholder="title">
+  </div>
+
+  <div>
+    <label for="tags">Select tags</label>
+    <select name="tags" id="tags" multiple>
+      @each(tag in tags)
+      <option value="{{tag.id}}">{{ tag.name }}</option>
+      @endeach
+    </select>
+  </div>
+
+  <div>
+    <textarea name="body" cols="30" rows="10"></textarea>
+  </div>
+
+  <div>
+    <button>Save</button>
+  </div>
+
+
+</form>
+
+@endsection

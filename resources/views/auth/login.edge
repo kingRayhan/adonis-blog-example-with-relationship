@@ -1,0 +1,14 @@
+@layout('layout')
+
+
+@section('body')
+<h1>Login</h1>
+<form action="{{ route('auth.login') }}" method="POST">
+  {{ csrfField() }}
+  <input type="text" name="email" id="email" placeholder="Email address"> <br>
+  <input type="password" name="password" id="password" placeholder="Password"> <br>
+
+  <button>Login</button>
+
+</form>
+@endsection
